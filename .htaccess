@@ -1,0 +1,12 @@
+RewriteEngine On
+# omitir directorios
+RewriteCond %{REQUEST_FILENAME} !-d 
+# omitir archivos 
+RewriteCond %{REQUEST_FILENAME} !-f 
+# subdirectorios
+RewriteCond %{REQUEST_FILENAME} !-l 
+
+RewriteRule ^(.*)$ index.php?url=$1 [L,QSA]
+
+
+ErrorDocument 404 /views/notfound/index.html
