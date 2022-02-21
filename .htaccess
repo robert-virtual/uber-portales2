@@ -9,4 +9,4 @@ RewriteCond %{REQUEST_FILENAME} !-l
 RewriteRule ^(.*)$ index.php?url=$1 [L,QSA]
 
 
-ErrorDocument 404 /views/notfound/index.html
+ErrorDocument 404 /views/notfound/index.php
