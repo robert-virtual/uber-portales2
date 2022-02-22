@@ -5,11 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Usuarios</title>
-    <link rel="stylesheet" href="public/css/usuarios.css">
+    <link rel="stylesheet" href="<?=URL?>public/css/usuarios.css">
 </head>
 <body>
 
     <?php
+        if ($this->reload) {
+            header("Location: ".URL."usuarios");
+            die();
+        }
         // require "../nav.php";
         require "views/nav.php";
         echo $this->error;

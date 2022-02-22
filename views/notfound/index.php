@@ -20,7 +20,7 @@
 </head>
 <body >
     <main>
-        <h1>Pagina no encontrada</h1>
+        <h1>Pagina "<?=$this->pagina;?>" no encontrada</h1>
     </main>
 
 </body>
