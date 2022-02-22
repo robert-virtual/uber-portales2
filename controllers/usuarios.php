@@ -21,7 +21,26 @@ class Usuarios extends Controller{
             $user = new Usuario($_POST["nombre"],$_POST["correo"],$_POST["clave"]);
             $user->create();
             $this->view->reload = true;
-            $this->view->render("usuarios");
+            $this->view->render("usuarios/index");
+            
+            
+        }
+
+        public function update(){
+            # code...
+            $nombre = $_POST["nombre"];
+            $correo = $_POST["correo"];
+            if (!isset($_POST["nombre"])) {
+                # code...
+                echo "Falta datos necesarios";
+                
+                die();
+            }
+            // $this->model
+            $user = new Usuario($_POST["nombre"],$_POST["correo"],$_POST["clave"]);
+            $user->create();
+            $this->view->reload = true;
+            $this->view->render("usuarios/index");
             
             
         }
@@ -29,23 +48,27 @@ class Usuarios extends Controller{
         public function obtenerTodos($any = ""){
             # code...
             $this->view->usuarios = $this->model->getAll();
-            $this->view->render("usuarios");
-
+            $this->view->render("usuarios/index");
+            
             
         }
         
-        public function obtenerUno($id){
+        public function get($id){
             # code...
             
             $this->view->usuario = $this->model->get($id);
+            $this->view->render("usuarios/usuario");
             
         }
         
-
-        public function eliminar(){
+        
+        public function disable($id){
             # code...
-            echo "obtenerTodos";
-            
+            $this->model->disable($id);
+            $this->view->id = $id;
+            $this->view->reload = true;
+            $this->view->render("usuarios/usuario");
+                        
         }
 }
 

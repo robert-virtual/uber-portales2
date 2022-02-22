@@ -26,8 +26,9 @@
         }
         public function getAll(){
             
-            $sql = "SELECT Id,Nombre,Correo,Estado FROM usuarios";
+            $sql = "SELECT Id,Nombre,Correo,Estado FROM usuarios where estado = 1";
             // print_r($this->conn);
+            
             $result = $this->conn->query($sql);
             $usuarios = [];
             if ($result->num_rows == 0) {
@@ -41,22 +42,24 @@
             return $usuarios;
         }
         public function get($id){
-            $sql = "SELECT Id,Nombre,Correo,Estado FROM usuarios where id = ? ";
+            $sql = "SELECT Id,Nombre,Correo,Estado FROM usuarios where Id = ?";
             $stmt = $this->conn->prepare($sql);
-         
-            $stmt->bind_param("s", $id);
             
-            $result = $this->conn->query($sql);
-            $usuarios = [];
-            if ($result->num_rows > 0) {
-                // output data of each row
-                while($row = $result->fetch_assoc()) {
-                    $usuarios[] = $row;
-                }
-            }
+            $stmt->bind_param("i", $id);
+            $stmt->execute();
+            $result = $stmt->get_result(); // get the mysqli result
+            $user = $result->fetch_assoc(); // fetch data  
+            
             $this->conn->close();
-            return $usuarios;
+            return $user;
         }
-
+        public function disable($id){
+            $stmt = $this->conn->prepare("UPDATE usuarios SET estado = !estado WHERE id = ?");
+            $stmt->bind_param("i", $id);
+            $stmt->execute();
+            $stmt->close();
+            $this->conn->close();
+        }
+        
     }
-?>
+    ?>

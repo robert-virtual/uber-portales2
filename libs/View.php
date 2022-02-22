@@ -2,7 +2,7 @@
     class View{
 
         public function render($name){
-            require "views/$name/index.php";
+            require "views/$name.php";
         }
        
     }

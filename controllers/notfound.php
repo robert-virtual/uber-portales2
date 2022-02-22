@@ -8,7 +8,7 @@
         public function render($pagina){
             # code...
             $this->view->pagina = $pagina;
-            $this->view->render("notfound");
+            $this->view->render("notfound/index");
         }
     }
 ?>
