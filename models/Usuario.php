@@ -26,7 +26,7 @@
         }
         public function getAll(){
             
-            $sql = "SELECT Id,Nombre,Correo,Estado FROM usuarios where estado = 1";
+            $sql = "SELECT Id,Nombre,Correo FROM usuarios where estado = 1";
             // print_r($this->conn);
             
             $result = $this->conn->query($sql);

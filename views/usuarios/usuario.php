@@ -16,31 +16,42 @@
         
     ?>
     <main class="m-4 ">
-        <div class="d-flex justify-content-between align-items-start">
-            <form class="d-flex flex-column" action="/usuarios/update" method="post" >
-                <h1>Actualizar <?=$this->usuario["Nombre"];?></h1>
-                <label for="nombre">Nombre</label>
-                <input class="form-control my-2" value="<?=$this->usuario["Nombre"];?>" placeholder="nombre" name="nombre" type="text">
-                <label for="correo">Correo</label>
-                <input class="form-control my-2" value="<?=$this->usuario["Correo"];?>" placeholder="correo" name="correo" type="text">
-                <button class="btn btn-primary">Actualizar</button>
-            </form>
-
-            
-            <?php
-                if ($this->usuario["Estado"]) {
-            ?>
-                <button onclick='location.replace("/usuarios/disable/<?=$this->usuario["Id"]?>")' class="btn btn-danger mt-4">Desactivar</button>
-            <?php
-                }else{
-            ?>
-                <button onclick='location.replace("/usuarios/disable/<?=$this->usuario["Id"]?>")' class="btn btn-success mt-4">Activar</button>
-            <?php
-                }
-            ?>
-
+        <div class="d-flex justify-content-between">
+            <div class="d-flex align-items-start gap-5">
+                <button onclick="location.href='/usuarios'" class="btn" style="width:50px;">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                </button>
+                <form class="d-flex flex-column" action="/usuarios/update" method="post" >
+                    <h1>Actualizar <?=$this->usuario["Nombre"];?></h1>
+                    <label for="nombre">Nombre</label>
+                    <input class="form-control my-2" value="<?=$this->usuario["Nombre"];?>" placeholder="nombre" name="nombre" type="text">
+                    <label for="correo">Correo</label>
+                    <input class="form-control my-2" value="<?=$this->usuario["Correo"];?>" placeholder="correo" name="correo" type="text">
+                    <button class="btn btn-primary">Actualizar</button>
+                </form>
+    
+    
+                
+            </div>  
+            <div>
+                <?php
+                    if ($this->usuario["Estado"]) {
+                ?>
+                    <button onclick='location.replace("/usuarios/disable/<?=$this->usuario["Id"]?>")' class="btn btn-danger mt-4">Desactivar</button>
+                <?php
+                    }else{
+                ?>
+                    <button onclick='location.replace("/usuarios/disable/<?=$this->usuario["Id"]?>")' class="btn btn-success mt-4">Activar</button>
+                <?php
+                    }
+                ?>
+    
+            </div>
 
         </div>
+
     </main>
     
 </body>
