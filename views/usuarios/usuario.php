@@ -12,6 +12,7 @@
             header("Location: ".URL."usuarios/get/$this->id");
             die();
         }
+        echo $this->error; 
         require 'views/nav.php';
         
     ?>
@@ -25,13 +26,15 @@
                 </button>
                 <form class="d-flex flex-column" action="/usuarios/update" method="post" >
                     <h1>Actualizar <?=$this->usuario["Nombre"];?></h1>
+                    <input hidden value="<?=$this->usuario["Id"];?>" name="id" type="text">
                     <label for="nombre">Nombre</label>
                     <input class="form-control my-2" value="<?=$this->usuario["Nombre"];?>" placeholder="nombre" name="nombre" type="text">
                     <label for="correo">Correo</label>
                     <input class="form-control my-2" value="<?=$this->usuario["Correo"];?>" placeholder="correo" name="correo" type="text">
                     <button class="btn btn-primary">Actualizar</button>
+                    
                 </form>
-    
+
     
                 
             </div>  

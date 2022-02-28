@@ -2,19 +2,29 @@
 class App {
     public function __construct() {
         $url = $_GET["url"]; // strins 
-        $url = rtrim($url,"/"); // array
-        $url = explode("/",$url);// removes / insnecesarios
-
+        $url = rtrim($url,"/"); // removes "/" insnecesarios
+        $url = explode("/",$url); // array 
+        
         if (!$url[0]) {
             # code...
-            $url[0] = "main";
+            $url[0] = "login";
+            if ($_SESSION["ok"]) {
+                # code...
+                $url[0] = "main";
+    
+            }
         } 
         
-        if ($url[0] == "usuarios" && !$url[1]) {
-            $url[1] = "obtenerTodos";
-            $url[2] = "";
+        if (!$url[1]) {
+            $url[1] = "index";
+            // $url[2] = "";
         } 
-            
+        if (!isset($_SESSION["ok"])) {
+            # code...
+            $url[0] = "login";
+
+        }
+
         $controller = "controllers/$url[0].php";// ruta al controllador
         
         if (!file_exists($controller)) {

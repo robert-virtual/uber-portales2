@@ -27,30 +27,30 @@ class Usuarios extends Controller{
         }
 
         public function update(){
-            # code...
-            $nombre = $_POST["nombre"];
-            $correo = $_POST["correo"];
-            if (!isset($_POST["nombre"])) {
-                # code...
-                echo "Falta datos necesarios";
-                
+
+            if (!isset($_POST["id"])) {
+                $this->view->error = "No proporciono un id de usuario para actualizar";
+                $this->view->render("usuarios/usuario");
                 die();
+                
             }
+            $this->model->nombre = $_POST["nombre"];
+            $this->model->correo = $_POST["correo"];
+            $this->model->id = $_POST["id"];
+
+            
             // $this->model
-            $user = new Usuario($_POST["nombre"],$_POST["correo"],$_POST["clave"]);
-            $user->create();
+            $this->model->update();
+            $this->view->id = $this->model->id;
             $this->view->reload = true;
-            $this->view->render("usuarios/index");
+            $this->view->render("usuarios/usuario");
             
             
         }
         
-        public function obtenerTodos($any = ""){
-            # code...
+        public function index(){
             $this->view->usuarios = $this->model->getAll();
             $this->view->render("usuarios/index");
-            
-            
         }
         
         public function get($id){

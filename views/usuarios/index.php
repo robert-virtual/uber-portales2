@@ -21,6 +21,7 @@
     ?>
     <main class="m-4 row">
     <div class="col-8">
+        
         <div  class="my-custom-scroll-bar overflow-auto" style="height:70vh !important;">
         <table class="table table-dark table-hover mt-4 ">
             <thead class="sticky-top">
@@ -58,9 +59,9 @@
                 
             </tbody>
         </table>
-        </div>
-        <h3>Usuarios: <?=count($usuarios);?></h3>
-
+    </div>
+    <h3>Usuarios: <?=count($usuarios);?></h3>
+    </div>
 
 
         
