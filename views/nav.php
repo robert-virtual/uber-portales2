@@ -8,8 +8,15 @@
         <a class="text-white text text-decoration-none mx-4" href="/clientes">Clientes</a>
         <a class="text-white text text-decoration-none mx-4" href="/conductores">Conductores</a>
     </div>
-    <div>
+    <div class="d-flex align-items-center gap-4">
         <span><?=$_SESSION["nombre"]?></span>
-        <a href="/login/cerrar" class="btn btn-light">Cerrar Session</a>
+        <?php 
+        if($_SESSION["ok"]){
+        ?>
+            <a href="/login/cerrar" class="btn btn-light">Cerrar Session</a>
+        <?php 
+
+        }
+        ?>
     </div>
 </nav>

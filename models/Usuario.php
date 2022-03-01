@@ -63,7 +63,6 @@
             $stmt->execute();
             $result = $stmt->get_result(); // get the mysqli result
             $user = $result->fetch_assoc(); // fetch data  
-            
             $this->conn->close();
             
             return $user;

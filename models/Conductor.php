@@ -40,7 +40,7 @@ class Conductor extends Model {
     }
     public function getAll(){
         
-        $sql = "SELECT Id, Nombre ,Correo ,Telefono ,Licencia ,Antecendentes ,Fecha ,Imagen ,Carro FROM conducotores where estado = 1";
+        $sql = "SELECT * FROM conductores where estado = 1";
         // print_r($this->conn);
         
         $result = $this->conn->query($sql);

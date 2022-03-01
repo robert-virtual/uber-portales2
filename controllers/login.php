@@ -16,10 +16,19 @@
                 $this->view->error = "Credenciales incorrectas";
                 $this->view->render("login/index");
                 return;
+            }
+
+            if (!$user["Estado"]) {
+                $this->view->error = "Credenciales incorrectas";
+                $this->view->render("login/index");
+                return;
             } 
+
+
             $_SESSION["ok"] = true;
-            $_SESSION["nombre"] = $user["nombre"];
-            $_SESSION["correo"] = $user["correo"];
+            $_SESSION["nombre"] = $user["Nombre"];
+            $_SESSION["correo"] = $user["Correo"];
+            $_SESSION["user"] = $user;
             $this->view->render("main/index");
 
             
