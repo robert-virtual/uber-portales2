@@ -25,11 +25,12 @@
             $stmt->close();
             $this->conn->close();
         }
-        public function getAll(){
+        public function getAll($estado = 0){
             
-            $sql = "SELECT Id,Nombre,Correo FROM usuarios where estado = 1";
+            $sql = "SELECT Id,Nombre,Correo FROM usuarios where estado = $estado";
             // print_r($this->conn);
             
+            $this->conn = $this->db->connect();
             $result = $this->conn->query($sql);
             $usuarios = [];
             if ($result->num_rows == 0) {
@@ -42,6 +43,7 @@
             $this->conn->close();
             return $usuarios;
         }
+        
         public function get($id){
             $sql = "SELECT Id,Nombre,Correo,Estado FROM usuarios where Id = ?";
             $stmt = $this->conn->prepare($sql);

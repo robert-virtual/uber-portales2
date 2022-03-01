@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Usuario</title>
 </head>
-<body>
+<body class="my-custom-scroll-bar">
     <?php
         if ($this->reload) {
             header("Location: ".URL."usuarios/get/$this->id");
@@ -26,32 +26,32 @@
                 </button>
                 <form class="d-flex flex-column" action="/usuarios/update" method="post" >
                     <h1>Actualizar <?=$this->usuario["Nombre"];?></h1>
-                    <input hidden value="<?=$this->usuario["Id"];?>" name="id" type="text">
+                    <input hidden value='<?=$this->usuario["Id"];?>' name="id" type="text" />
                     <label for="nombre">Nombre</label>
-                    <input class="form-control my-2" value="<?=$this->usuario["Nombre"];?>" placeholder="nombre" name="nombre" type="text">
+                    <input class="form-control my-2 " style="width:min-content !important;" value="<?=$this->usuario["Nombre"];?>" placeholder="nombre" name="nombre" type="text">
                     <label for="correo">Correo</label>
-                    <input class="form-control my-2" value="<?=$this->usuario["Correo"];?>" placeholder="correo" name="correo" type="text">
-                    <button class="btn btn-primary">Actualizar</button>
+                    <input class="form-control my-2 " style="width:min-content !important;" value="<?=$this->usuario["Correo"];?>" placeholder="correo" name="correo" type="text">
+                    <div class="">
+                        <?php
+                            if ($this->usuario["Estado"]) {
+                                ?>
+                            <button onclick='location.replace("/usuarios/disable/<?=$this->usuario["Id"]?>")' class="btn btn-danger ">Desactivar</button>
+                        <?php
+                            }else{
+                        ?>
+                            <button onclick='location.replace("/usuarios/disable/<?=$this->usuario["Id"]?>")' class="btn btn-success ">Activar</button>
+                        <?php
+                            }
+                        ?>
+                            <button class="btn btn-primary ms-4">Actualizar</button>
+                    </div>
                     
                 </form>
 
     
                 
             </div>  
-            <div>
-                <?php
-                    if ($this->usuario["Estado"]) {
-                ?>
-                    <button onclick='location.replace("/usuarios/disable/<?=$this->usuario["Id"]?>")' class="btn btn-danger mt-4">Desactivar</button>
-                <?php
-                    }else{
-                ?>
-                    <button onclick='location.replace("/usuarios/disable/<?=$this->usuario["Id"]?>")' class="btn btn-success mt-4">Activar</button>
-                <?php
-                    }
-                ?>
-    
-            </div>
+            
 
         </div>
 

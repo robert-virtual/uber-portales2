@@ -49,7 +49,8 @@ class Usuarios extends Controller{
         }
         
         public function index(){
-            $this->view->usuarios = $this->model->getAll();
+            $this->view->usuarios = $this->model->getAll(1);
+            $this->view->inactivos = $this->model->getAll(0);
             $this->view->render("usuarios/index");
         }
         
