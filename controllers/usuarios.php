@@ -9,22 +9,7 @@ class Usuarios extends Controller{
         }      
         
         
-        public function crear(){
-            # code...
-            if (!isset($_POST["nombre"])) {
-                # code...
-                echo "Falta datos necesarios";
-                
-                die();
-            }
-            // $this->model
-            $user = new Usuario($_POST["nombre"],$_POST["correo"],$_POST["clave"]);
-            $user->create();
-            $this->view->reload = true;
-            $this->view->render("usuarios/index");
-            
-            
-        }
+       
 
         public function update(){
 
@@ -56,8 +41,8 @@ class Usuarios extends Controller{
         
         public function get($id){
             # code...
-            
-            $this->view->usuario = $this->model->get($id);
+            $sql = "SELECT Id,Nombre,Correo,Estado FROM usuarios where Id = ?";
+            $this->view->usuario = $this->model->get($id,$sql);
             $this->view->render("usuarios/usuario");
             
         }

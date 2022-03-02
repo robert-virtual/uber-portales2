@@ -18,15 +18,16 @@
        
         public function crear(){
             # code...
-            if (!isset($_POST["nombre"])) {
+            if (!isset($_POST["nombre"]) || !isset($_POST["correo"])) {
                 # code...
                 echo "Falta datos necesarios";
-                
                 die();
+                
             }
             // $this->model
-            $user = new Conductor($_POST["nombre"],$_POST["correo"],$_POST["telefono"],$_POST["licenciaImagen"],
-            $_POST["antecedentesImagen"],$_POST["Imagen"],$_POST["tipoCarro"]);
+
+            $user = new Conductor($_POST["nombre"],$_POST["correo"],$_POST["telefono"],$_POST["tipoCarro"]);
+            
             $user->create();
             $this->view->reload = true;
             $this->view->render("conductores/index"); 
@@ -59,7 +60,10 @@
         public function get($id){
             # code...
             
-            $this->view->conductor = $this->model->get($id);
+            
+            $sql = "SELECT Id,Nombre,Correo,Telefono FROM conductores where Id = ?";
+            $this->view->usuario = $this->model->get($id,$sql);
+
             $this->view->render("conductores/conductor");
             
         }

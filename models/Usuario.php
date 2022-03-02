@@ -44,18 +44,7 @@
             return $usuarios;
         }
         
-        public function get($id){
-            $sql = "SELECT Id,Nombre,Correo,Estado FROM usuarios where Id = ?";
-            $stmt = $this->conn->prepare($sql);
-            
-            $stmt->bind_param("i", $id);
-            $stmt->execute();
-            $result = $stmt->get_result(); // get the mysqli result
-            $user = $result->fetch_assoc(); // fetch data  
-            
-            $this->conn->close();
-            return $user;
-        }
+       
 
         public function login(){
             $sql = "SELECT Id,Nombre,Correo,Estado FROM usuarios where correo = ?";

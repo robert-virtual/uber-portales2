@@ -16,26 +16,19 @@ class Conductor extends Model {
 
     
 
-    public function __construct($nombre = "",$correo = "",$telefono = "",$licenciaImagen = "",$antecedentesImagen = "",
-    $fechaRegistro = "", $Imagen= "",$tipoCarro = "",$estado = true) {
+    public function __construct($nombre = "",$correo = "",$telefono = "",$tipoCarro = "",$estado = true) {
         parent::__construct();
         $this->conn = $this->db->connect();
         $this->nombre = $nombre;
         $this->correo = $correo;
         $this->telefono = $telefono;
-        $this->licenciaImagen = $licenciaImagen;
-        $this->antecedentesImagen= $antecedentesImagen;
-        $this->fechaRegistro = $fechaRegistro;
-        $this->Imagen = $Imagen;
         $this->tipoCarro = $tipoCarro; 
-        $this->estado = $estado;
     }
     public function create(){
         # code...
-        $stmt = $this->conn->prepare("INSERT INTO conductores (nombre, correo, telefono,licenciaImagen,antecendetesImagen,fechaRegistro
-        Imagen, tipoCarro, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("sss", $this->nombre, $this->correo, $this->telefono, $this->licenciaImagen, $this->correo, $this->antecedentesImagen,
-        $this->fechaRegistro, $this->Imagen, $this->tipoCarro, $this->correo);
+        $stmt = $this->conn->prepare("INSERT INTO conductores (nombre, correo, telefono, tipoCarro) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("ssss", $this->nombre, $this->correo, $this->telefono,
+        $this->tipoCarro);
         $stmt->execute();
         $stmt->close();
         $this->conn->close();
@@ -45,7 +38,7 @@ class Conductor extends Model {
     
     public function getAll(){
         
-        $sql = "SELECT Id,Nombre,Correo,Telefono FROM conductores where estado = 1";
+        $sql = "SELECT Id,Nombre,Correo,Telefono,TipoCarro FROM conductores where estado = 1";
         // print_r($this->conn);
         
         $result = $this->conn->query($sql);
@@ -61,7 +54,7 @@ class Conductor extends Model {
         return $conductores;
     }
  
-
+    
     
 
     

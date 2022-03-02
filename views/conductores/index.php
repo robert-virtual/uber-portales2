@@ -67,14 +67,14 @@
         
                 <!-- formulario -->
             <div class="col-4" >
-                <form class="shadow rounded d-flex flex-column p-4" action="/usuarios/crear" method="post" >
+                <form class="shadow rounded d-flex flex-column p-4" action="/conductores/crear" method="post" >
                     <h1>Crear conductor</h1>
                     <input class="form-control my-2" placeholder="nombre" name="nombre" type="text">
                     <input class="form-control my-2" placeholder="correo" name="correo" type="text">
-                    <input class="form-control my-2" placeholder="Telefono" name="clave" type="password">
+                    <input class="form-control my-2" max="8" placeholder="Telefono" name="telefono" type="tel">
                     <p>
                       Tipo de carro:
-                          <select name="deporte">
+                          <select name="tipoCarro">
                               <option>Lujo</option>
                               <option>Normal</option>
                         </select>
