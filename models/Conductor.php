@@ -14,6 +14,8 @@ class Conductor extends Model {
     public $estado = true;
     
 
+    
+
     public function __construct($nombre = "",$correo = "",$telefono = "",$licenciaImagen = "",$antecedentesImagen = "",
     $fechaRegistro = "", $Imagen= "",$tipoCarro = "",$estado = true) {
         parent::__construct();
@@ -38,6 +40,9 @@ class Conductor extends Model {
         $stmt->close();
         $this->conn->close();
     }
+
+
+    
     public function getAll(){
         
         $sql = "SELECT Id,Nombre,Correo,Telefono FROM conductores where estado = 1";
