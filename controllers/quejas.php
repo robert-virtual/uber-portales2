@@ -10,21 +10,19 @@ class Quejas extends Controller{
         
         public function crear(){
             
-            if (!isset($_POST["usuarioid"]) || !isset($_POST["viajeid"]) || !isset($_POST["clave"]) ) {
+            if (!isset($_POST["usuarioid"]) || !isset($_POST["viajeid"]) || !isset($_POST["queja"]) ) {
 
                 echo "Falta datos necesarios";
                 die();
                 
             }
 
-            $this->model->nombre = $_POST["nombre"];
-            $this->model->correo = $_POST["correo"];
-            $this->model->direccion = $_POST["direccion"];
-            $this->model->telefono = $_POST["telefono"];
-            $this->model->clave = $_POST["clave"];
+            $this->model->usiarioid = $_POST["usuarioid"];
+            $this->model->viajeid = $_POST["viajeid"];
+            $this->model->queja = $_POST["queja"];
             $this->model->create();
             $this->view->reload = true;
-            $this->view->render("usuarios/index"); 
+            $this->view->render("quejas/index"); 
         }
        
 
@@ -32,12 +30,12 @@ class Quejas extends Controller{
 
             if (!isset($_POST["id"])) {
                 $this->view->error = "No proporciono un id de usuario para actualizar";
-                $this->view->render("usuarios/usuario");
+                $this->view->render("quejas/queja");
                 die();
                 
             }
-            $this->model->nombre = $_POST["nombre"];
-            $this->model->correo = $_POST["correo"];
+            $this->model->nombre = $_POST["usuarioid"];
+            $this->model->viajeid = $_POST["viajeid"];
             $this->model->id = $_POST["id"];
 
             
@@ -45,20 +43,20 @@ class Quejas extends Controller{
             $this->model->update();
             $this->view->id = $this->model->id;
             $this->view->reload = true;
-            $this->view->render("usuarios/usuario");
+            $this->view->render("quejas/queja");
             
             
         }
         
-        public function index(){
-            $this->view->usuarios = $this->model->getAll(1);
-            $this->view->inactivos = $this->model->getAll(0);
-            $this->view->render("usuarios/index");
-        }
+        // public function index(){
+        //     $this->view->usuarios = $this->model->getAll(1);
+        //     $this->view->inactivos = $this->model->getAll(0);
+        //     $this->view->render("usuarios/index");
+        // }
         
         public function get($id){
             # code...
-            $sql = "SELECT Id,Nombre,Correo,Estado FROM usuarios where Id = ?";
+            $sql = "SELECT Id,Nombre,viajeid,Estado FROM usuarios where Id = ?";
             $this->view->usuario = $this->model->get($id,$sql);
             $this->view->render("usuarios/usuario");
             

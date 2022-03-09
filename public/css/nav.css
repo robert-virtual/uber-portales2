@@ -1,4 +1,4 @@
-.btn-hamburgesa {
+#btn-hamburgesa {
   width: 3rem;
   color: white;
   background: none;
@@ -9,13 +9,18 @@
   height: 10vh;
 }
 #right-nav {
+  z-index: 9999;
   position: absolute;
   display: flex;
   flex-direction: column;
   height: 90vh;
   width: 20rem;
+  transform: translateX(20rem);
   padding: 1rem;
   right: 0;
   transform: translateX(-100%);
   background-color: #212529;
+}
+#input-menu:checked + #right-nav {
+  transform: translateX(0);
 }
