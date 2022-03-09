@@ -1,16 +1,16 @@
 <?php
 
-class Usuarios extends Controller{
+class Quejas extends Controller{
 
         public function __construct() {
             parent::__construct();
-            $this->loadModel("Usuario");
+            $this->loadModel("Queja");
             // render debe ir siempre al final para poder pasarleinformacion
         }      
         
         public function crear(){
             
-            if (!isset($_POST["nombre"]) || !isset($_POST["correo"]) || !isset($_POST["clave"]) ) {
+            if (!isset($_POST["usuarioid"]) || !isset($_POST["viajeid"]) || !isset($_POST["clave"]) ) {
 
                 echo "Falta datos necesarios";
                 die();

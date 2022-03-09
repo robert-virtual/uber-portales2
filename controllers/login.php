@@ -19,11 +19,16 @@
             }
 
             if (!$user["Estado"]) {
-                $this->view->error = "Credenciales incorrectas";
+                $this->view->error = "Usuario deshabilitado";
                 $this->view->render("login/index");
                 return;
             } 
-
+            if (!password_verify($_POST["clave"],$user["Clave"])) {
+                # code...
+                $this->view->error = "Clave incorrecta";
+                $this->view->render("login/index");
+                return;
+            }
 
             $_SESSION["ok"] = true;
             $_SESSION["nombre"] = $user["Nombre"];

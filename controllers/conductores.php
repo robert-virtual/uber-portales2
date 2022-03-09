@@ -55,14 +55,15 @@
             $this->view->render("conductores/conductor");
             
             
+            
         }
         
         public function get($id){
             # code...
             
             
-            $sql = "SELECT Id,Nombre,Correo,Telefono FROM conductores where Id = ?";
-            $this->view->usuario = $this->model->get($id,$sql);
+            $sql = "SELECT Id,nombre,correo,telefono FROM conductores where Id = ?";
+            $this->view->conductor = $this->model->get($id,$sql);
 
             $this->view->render("conductores/conductor");
             

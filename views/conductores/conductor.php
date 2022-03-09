@@ -25,23 +25,23 @@
                 </svg>
                 </button>
                 <form class="d-flex flex-column" action="/conductores/update" method="post" >
-                    <h1>Actualizar <?=$this->conductor["Nombre"];?></h1>
+                    <h1>Actualizar <?=$this->conductor["nombre"];?></h1>
                     <input hidden value='<?=$this->conductor["Id"];?>' name="id" type="text" />
                     <label for="nombre">Nombre</label>
-                    <input class="form-control my-2 " style="width:min-content !important;" value="<?=$this->condutor["Nombre"];?>" placeholder="nombre" name="nombre" type="text">
+                    <input class="form-control my-2 " style="width:min-content !important;" value="<?=$this->conductor["nombre"];?>" placeholder="nombre" name="nombre" type="text">
                     <label for="correo">Correo</label>
-                    <input class="form-control my-2 " style="width:min-content !important;" value="<?=$this->conductor["Correo"];?>" placeholder="correo" name="correo" type="text">
+                    <input class="form-control my-2 " style="width:min-content !important;" value="<?=$this->conductor["correo"];?>" placeholder="correo" name="correo" type="text">
                     <label for="telefono">Telefono</label>
                     <input class="form-control my-2 " style="width:min-content !important;" value="<?=$this->conductor["telefono"];?>" placeholder="telefono" name="telefono" type="text">
                     <div class="">
                         <?php
                             if ($this->condutor["Estado"]) {
                                 ?>
-                            <button onclick='location.replace("/conductor/disable/<?=$this->conductor["Id"]?>")' class="btn btn-danger ">Desactivar</button>
+                            <button onclick='location.replace("/conductores/disable/<?=$this->conductor["Id"]?>")' class="btn btn-danger ">Desactivar</button>
                         <?php
                             }else{
                         ?>
-                            <button onclick='location.replace("/conductor/disable/<?=$this->conductor["Id"]?>")' class="btn btn-success ">Activar</button>
+                            <button onclick='location.replace("/conductores/disable/<?=$this->conductor["Id"]?>")' class="btn btn-success ">Activar</button>
                         <?php
                             }
                         ?>

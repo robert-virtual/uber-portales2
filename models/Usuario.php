@@ -1,53 +1,45 @@
 
-<?php
-
-    class Usuario extends Model {
-        public $id = "";
-        public $nombre = "";
-        public $correo = "";
-        public $clave = "";
-        public $estado = true;
-        
-
-        public function __construct($nombre = "",$correo = "",$clave = "",$estado = true) {
+<?php  
+class Usuario extends Model {
+        public $id = 0; 
+        public $nombre = ""; 
+        public $correo = ""; 
+        public $clave = ""; 
+        public $estado = true; 
+    
+        public function __construct(
+            $nombre="",
+            $correo="",
+            $clave=""
+        ) {
             parent::__construct();
             $this->conn = $this->db->connect();
             $this->nombre = $nombre;
             $this->correo = $correo;
-            $this->clave = $clave;
-            $this->estado = $estado;
+            $this->clave  = $clave;
         }
-        public function create(){
-            # code...
-            $stmt = $this->conn->prepare("INSERT INTO usuarios (nombre, correo, clave) VALUES (?, ?, ?)");
-            $stmt->bind_param("sss", $this->nombre, $this->correo, password_hash($this->clave, PASSWORD_DEFAULT));
-            $stmt->execute();
-            $stmt->close();
-            $this->conn->close();
-        }
-        public function getAll($estado = 0){
-            
+        
+        public function getAll($estado ){
+            $this->conn = $this->db->connect();
+        
             $sql = "SELECT Id,Nombre,Correo FROM usuarios where estado = $estado";
             // print_r($this->conn);
             
-            $this->conn = $this->db->connect();
             $result = $this->conn->query($sql);
-            $usuarios = [];
+            $conductores = [];
             if ($result->num_rows == 0) {
                 // output data of each row
                 $this->view->error = "Consulta vacia";
             }
             while($row = $result->fetch_assoc()) {
-                $usuarios[] = $row;
+                $conductores[] = $row;
             }
             $this->conn->close();
-            return $usuarios;
+            return $conductores;
         }
-        
-       
 
         public function login(){
-            $sql = "SELECT Id,Nombre,Correo,Estado FROM usuarios where correo = ?";
+            $sql = "SELECT Id,Nombre,Correo,Estado,Clave FROM usuarios where correo = ?";
             $stmt = $this->conn->prepare($sql);
             
             $stmt->bind_param("s", $this->correo);
@@ -66,7 +58,15 @@
             $stmt->close();
             $this->conn->close();
         }
-        
+        public function create(){
+            $stmt = $this->conn->prepare("INSERT INTO usuarios (nombre,  correo, clave) VALUES (?, ?, ?, ?)");
+            $stmt->bind_param("sss", $this->nombre, $this->correo, password_hash($this->clave,PASSWORD_DEFAULT));
+            $stmt->execute();
+            $stmt->close();
+            $this->conn->close();
+        }
+
+
         public function update(){
             $sql = "UPDATE usuarios SET nombre = IF(? != '',?, nombre),
             correo = IF(? != '', ?,correo) WHERE id = ?";
@@ -75,7 +75,8 @@
             $stmt->execute();
             $stmt->close();
             $this->conn->close();
+            
         }
         
     }
-    ?>
+?>

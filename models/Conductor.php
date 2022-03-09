@@ -53,10 +53,26 @@ class Conductor extends Model {
         $this->conn->close();
         return $conductores;
     }
- 
+
+
+
+    public function disable($id){
+        $stmt = $this->conn->prepare("UPDATE conductores SET estado = !estado WHERE id = ?");
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $stmt->close();
+        $this->conn->close();
+    }
     
+    public function update(){
+        $sql = "UPDATE conductores SET nombre = IF(? != '',?, nombre), correo = IF(? != '', ?, correo), telefono = IF(? != '', ?,telefono) WHERE id = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("ssssssi",$this->nombre,$this->nombre,$this->correo,$this->correo, $this->telefono,$this->telefono,$this->id);
+        $stmt->execute();
+        $stmt->close();
+        $this->conn->close();
+    }
     
 
-    
 }
 ?>
