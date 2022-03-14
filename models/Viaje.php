@@ -1,6 +1,6 @@
 <?php
     class Viaje extends Model {
-        public $id = "";
+        public $id = 0;
         public $clienteId = "";
         public $descripcion = "";
         public $destino = "";
@@ -10,8 +10,15 @@
         public $monto = "";
         public $porcentajeDeduccion = "";
 
-        public function __construct($clienteId = "",$descripcion = "",$destino = "",$fecha = "",
-                                    $duracion = "",$conductorId = "",$monto = "",$porcentajeDeduccion = ""){
+        public function __construct(
+            $clienteId = "",
+            $descripcion = "",
+            $destino = "",
+            $fecha = "",
+            $duracion = "",
+            $conductorId = "",
+            $monto = "",$porcentajeDeduccion = ""
+        ) {
             parent::__construct();
             $this->conn = $this->db->connect();
             $this->cliente = $clienteId;
@@ -23,8 +30,9 @@
             $this->monto = $monto;
             $this->porcentajeDeduccion = $porcentajeDeduccion;
         }
+        
         public function getAll() {
-            $sql = "SELECT Id,Monto,Descripcion,Destino,Fecha,MetodoPago FROM viajes";
+            $sql = "SELECT Id,clienteId,Monto,Descripcion,Destino,Fecha,MetodoPago FROM viajes";
             $this->conn = $this->db->connect();
             $result = $this->conn->query($sql);
             $viajes = [];

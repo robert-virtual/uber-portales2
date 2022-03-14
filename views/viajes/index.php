@@ -5,8 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Viajes</title>
-    <link rel="stylesheet" href="<?=URL?>public/css/usuarios.css">
+    <link rel="stylesheet" href="<?=URL?>public/css/viajes.css">
 </head>
+
 <body class="my-custom-scroll-bar">
 
     <?php
@@ -74,18 +75,23 @@
                     <input class="form-control my-2" placeholder="destino" name="destino" type="text">
                     <p>
                       Monto:
-                          <select name="tipoCarro">
+                          <select name="monto">
                               <option>Efectivo</option>
                               <option>Credito</option>
                         </select>
                     </p>
                     
-                  
                     <button class="btn btn-primary">Crear</button>
                 </form>
             </div>
         </div>
-        <hr>
+      
+
+
+    </main>
+    
+</body>
+</html>
     </main>
     
 </body>

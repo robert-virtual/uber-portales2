@@ -10,7 +10,7 @@ class App {
             $url[0] = "login";
             if ($_SESSION["ok"]) {
                 # code...
-                $url[0] = "main";
+                $url[0] = "usuarios";
     
             }
         } 

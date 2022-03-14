@@ -19,12 +19,11 @@ class Usuarios extends Controller{
 
             $this->model->nombre = $_POST["nombre"];
             $this->model->correo = $_POST["correo"];
-            $this->model->direccion = $_POST["direccion"];
-            $this->model->telefono = $_POST["telefono"];
             $this->model->clave = $_POST["clave"];
             $this->model->create();
             $this->view->reload = true;
             $this->view->render("usuarios/index"); 
+
         }
        
 

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Viajes</title>
+    <title>Viaje</title>
 </head>
 <body class="my-custom-scroll-bar">
     <?php
@@ -30,14 +30,14 @@
                     <label for="cliente">clienteId</label>
                     <input class="form-control my-2 " style="width:min-content !important;" value="<?=$this->viaje["clienteId"];?>" placeholder="clienteId" name="clienteId" type="text">
                     <label for="descripcion">descripcion</label>
-                    <input class="form-control my-2 " style="width:min-content !important;" value="<?=$this->viaje["correo"];?>" placeholder="descripcion" name="descripcion" type="text">
+                    <input class="form-control my-2 " style="width:min-content !important;" value="<?=$this->viaje["descripcion"];?>" placeholder="descripcion" name="descripcion" type="text">
                     <label for="destino">destino</label>
                     <input class="form-control my-2 " style="width:min-content !important;" value="<?=$this->viaje["destino"];?>" placeholder="destino" name="destino" type="text">
                     <div class="">
                         <?php
                             if ($this->viaje[]) {
                                 ?>
-                            <button onclick='location.replace("/viajes/disable/<?=$this->viajes["Id"]?>")' class="btn btn-danger ">Desactivar</button>
+                            <button onclick='location.replace("/viajes/disable/<?=$this->viaje["Id"]?>")' class="btn btn-danger ">Desactivar</button>
                         <?php
                             }else{
                         ?>

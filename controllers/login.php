@@ -34,9 +34,8 @@
             $_SESSION["nombre"] = $user["Nombre"];
             $_SESSION["correo"] = $user["Correo"];
             $_SESSION["user"] = $user;
-            $this->view->render("main/index");
-
             
+            header("Location: ".URL."usuarios");
             
         }
 

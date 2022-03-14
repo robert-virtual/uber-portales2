@@ -18,8 +18,7 @@
        
         public function crear(){
             
-            if (!isset($_POST["nombre"]) || !isset($_POST["correo"])) {
-
+            if (!isset($_POST["nombre"]) || !isset($_POST["correo"]) || !isset($_POST["direccion"]) || !isset($_POST["telefono"])) {
                 echo "Falta datos necesarios";
                 die();
                 
@@ -77,6 +76,3 @@
 
         
     }
-
-    
-?>

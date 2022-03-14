@@ -59,7 +59,8 @@ class Usuario extends Model {
             $this->conn->close();
         }
         public function create(){
-            $stmt = $this->conn->prepare("INSERT INTO usuarios (nombre,  correo, clave) VALUES (?, ?, ?, ?)");
+            $stmt = $this->conn->prepare("INSERT INTO usuarios (nombre,  correo, clave) VALUES (?, ?, ?)");
+
             $stmt->bind_param("sss", $this->nombre, $this->correo, password_hash($this->clave,PASSWORD_DEFAULT));
             $stmt->execute();
             $stmt->close();

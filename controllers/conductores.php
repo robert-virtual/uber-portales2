@@ -62,7 +62,7 @@
             # code...
             
             
-            $sql = "SELECT Id,nombre,correo,telefono FROM conductores where Id = ?";
+            $sql = "SELECT Id,nombre,correo,telefono,estado FROM conductores where Id = ?";
             $this->view->conductor = $this->model->get($id,$sql);
 
             $this->view->render("conductores/conductor");

@@ -35,7 +35,7 @@
                     <input class="form-control my-2 " style="width:min-content !important;" value="<?=$this->conductor["telefono"];?>" placeholder="telefono" name="telefono" type="text">
                     <div class="">
                         <?php
-                            if ($this->condutor["Estado"]) {
+                            if ($this->conductor["estado"]) {
                                 ?>
                             <button onclick='location.replace("/conductores/disable/<?=$this->conductor["Id"]?>")' class="btn btn-danger ">Desactivar</button>
                         <?php
@@ -44,6 +44,7 @@
                             <button onclick='location.replace("/conductores/disable/<?=$this->conductor["Id"]?>")' class="btn btn-success ">Activar</button>
                         <?php
                             }
+                           
                         ?>
                             <button class="btn btn-primary ms-4">Actualizar</button>
                     </div>
