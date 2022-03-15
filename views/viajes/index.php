@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Viajes</title>
-    <link rel="stylesheet" href="<?=URL?>public/css/viajes.css">
+    <link rel="stylesheet" href="<?=URL?>public/css/usuarios.css">
 </head>
 
 <body class="my-custom-scroll-bar">
@@ -46,7 +46,7 @@
                         foreach ($viajes as $value) {
                         ?>
                             
-                            <tr  style="cursor:pointer;" onclick="location.href='/viajes/get/<?=$value['Id'] ?>'"  >
+                            <tr  style="cursor:pointer;"   >
                                 <?php
                                 foreach ($fields as $key => $v) {
                                 ?>
@@ -70,14 +70,42 @@
             <div class="col-4" >
                 <form class="shadow rounded d-flex flex-column p-4" action="/viajes/crear" method="post" >
                     <h1>Crear Viaje</h1>
-                    <input class="form-control my-2" placeholder="clienteId" name="clienteId" type="text">
+                    <input name="conductor" class="form-control my-2" list="conductores"  placeholder="conductor">
+                    <datalist id="conductores" >
+                        <?php
+                        foreach ($this->conductores as $conductor) {
+                            # code...
+                        ?>
+                        <option value="<?=$conductor['id']?>"><?=$conductor['nombre']?></option>
+                        <?php
+                            }
+                        
+                        ?>
+
+                    </datalist>
+                    <input name="cliente" class="form-control my-2" list="clientes"  placeholder="cliente">
+                    <datalist id="clientes" >
+                        <?php
+                        foreach ($this->clientes as $cliente) {
+                            # code...
+                        ?>
+                        <option value="<?=$cliente['id']?>"><?=$cliente['nombre']?></option>
+                        <?php
+                            }
+                        
+                        ?>
+                    </datalist>
+                    <input class="form-control my-2" placeholder="monto" name="monto" type="number">
                     <input class="form-control my-2" placeholder="descripcion" name="descripcion" type="text">
                     <input class="form-control my-2" placeholder="destino" name="destino" type="text">
+                    <input class="form-control my-2" placeholder="fecha" name="fecha" type="date">
+                    <input class="form-control my-2" placeholder="duracion" name="duracion" type="text" >
+                    <input class="form-control my-2" placeholder="porcentajededuccion" name="porcentajededuccion" type="number" step=".01">
                     <p>
-                      Monto:
-                          <select name="monto">
-                              <option>Efectivo</option>
-                              <option>Credito</option>
+                      Metodo Pago:
+                          <select name="metodopago" class="form-control my-2">
+                              <option value="Efectivo">Efectivo</option>
+                              <option value="Credito">Credito</option>
                         </select>
                     </p>
                     
@@ -85,6 +113,8 @@
                 </form>
             </div>
         </div>
+
+       
       
 
 
@@ -92,7 +122,4 @@
     
 </body>
 </html>
-    </main>
-    
-</body>
-</html>
+

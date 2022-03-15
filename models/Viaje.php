@@ -1,6 +1,6 @@
 <?php
     class Viaje extends Model {
-        public $id = 0;
+        public $id = "";
         public $clienteId = "";
         public $descripcion = "";
         public $destino = "";
@@ -9,6 +9,7 @@
         public $conductorId = "";
         public $monto = "";
         public $porcentajeDeduccion = "";
+        public $metodopago = "";
 
         public function __construct(
             $clienteId = "",
@@ -21,12 +22,12 @@
         ) {
             parent::__construct();
             $this->conn = $this->db->connect();
-            $this->cliente = $clienteId;
+            $this->clienteId = $clienteId;
             $this->descripcion = $descripcion;
             $this->destino = $destino;
             $this->fecha = $fecha;
             $this->duracion = $duracion;
-            $this->conductor = $conductorId;
+            $this->conductorId = $conductorId;
             $this->monto = $monto;
             $this->porcentajeDeduccion = $porcentajeDeduccion;
         }
@@ -47,8 +48,8 @@
         }
 
         public function create(){
-            $stmt = $this->conn->prepare("INSERT INTO viajes(clienteId, descripcion, destino, fecha, duracion, conductor, monto, porcentajeDeduccion VALUES (?,?,?,?,?,?,?,?" );
-            $stmt->bind_param("issssidd", $this->descripcion, $this->destino, $this->fecha, $this->duracion, $this->conductor, $this->monto, $this->porcentajeDeduccion);
+            $stmt = $this->conn->prepare("INSERT INTO viajes(clienteId,descripcion,destino,duracion,conductorId,monto,porcentajeDeducccion,metodoPago)  VALUES (?,?,?,?,?,?,?,?)" );
+            $stmt->bind_param("isssidds", $this->clienteId,  $this->descripcion, $this->destino, $this->duracion,$this->conductorId, $this->monto, $this->porcentajeDeduccion,$this->metodopago);
             $stmt->execute();
             $stmt->close();
             $this->conn->close();

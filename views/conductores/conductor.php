@@ -14,7 +14,6 @@
         }
         echo $this->error; 
         require 'views/nav.php';
-        
     ?>
     <main class="m-4 ">
         <div class="d-flex justify-content-between">

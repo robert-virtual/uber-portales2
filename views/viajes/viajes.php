@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Viaje</title>
+    <title>Viajes</title>
 </head>
 <body class="my-custom-scroll-bar">
     <?php
@@ -25,14 +25,20 @@
                 </svg>
                 </button>
                 <form class="d-flex flex-column" action="/viajes/update" method="post" >
-                    <h1>Actualizar <?=$this->viaje["clienteId"];?></h1>
+                    <h1>Actualizar <?=$this->viaje["descripcion"];?></h1>
                     <input hidden value='<?=$this->viaje["Id"];?>' name="id" type="text" />
-                    <label for="cliente">clienteId</label>
-                    <input class="form-control my-2 " style="width:min-content !important;" value="<?=$this->viaje["clienteId"];?>" placeholder="clienteId" name="clienteId" type="text">
-                    <label for="descripcion">descripcion</label>
-                    <input class="form-control my-2 " style="width:min-content !important;" value="<?=$this->viaje["descripcion"];?>" placeholder="descripcion" name="descripcion" type="text">
-                    <label for="destino">destino</label>
+                    <label for="descripcion">Descripcion</label>
+                    <input class="form-control my-2 " style="width:min-content !important;" value="<?=$this->viaje["descripcion"];?>" placeholder="descrpcion" name="descripcion" type="text">
+                    <label for="destino">Destino</label>
                     <input class="form-control my-2 " style="width:min-content !important;" value="<?=$this->viaje["destino"];?>" placeholder="destino" name="destino" type="text">
+                    <label for="fecha">Fecha</label>
+                    <input class="form-control my-2 " style="width:min-content !important;" value="<?=$this->viaje["fecha"];?>" placeholder="fecha" name="fecha" type="text">
+                    <label for="duracion">Duracion</label>
+                    <input class="form-control my-2 " style="width:min-content !important;" value="<?=$this->viaje["duracion"];?>" placeholder="duracion" name="duracion" type="text">
+                    <label for="monto">Monto</label>
+                    <input class="form-control my-2 " style="width:min-content !important;" value="<?=$this->viaje["monto"];?>" placeholder="monto" name="monto" type="text">
+                    <label for="porcentajeDeduccion">porcentajeDeduccion</label>
+                    <input class="form-control my-2 " style="width:min-content !important;" value="<?=$this->viaje["porcentajeDeduccion"];?>" placeholder="porcentajeDeduccion" name="porcentajeDeduccion" type="text">
                     <div class="">
                         <?php
                             if ($this->viaje[]) {

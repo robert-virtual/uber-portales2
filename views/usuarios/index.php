@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Usuarios</title>
+
     <link rel="stylesheet" href="<?=URL?>public/css/usuarios.css">
 </head>
 <body class="my-custom-scroll-bar">
@@ -24,12 +25,17 @@
 
             <div class="col-8">
                 <h2>Usuarios Activos</h2>
+                
+                <input id="buscar" 
+                class="form-control mr-sm-2" 
+                type="search" 
+                placeholder="Search" />
                 <div  class="my-custom-scroll-bar overflow-auto" style="height:70vh !important;">
-                <table class="table table-dark table-hover mt-4 ">
-                    <thead class="sticky-top">
-                        <tr>
-                            <?php
-                            $usuarios = $this->usuarios;
+                    <table id="table-activos" class="table table-dark table-hover mt-4 ">
+                        <thead class="sticky-top">
+                            <tr>
+                                <?php
+                                $usuarios = $this->usuarios;
                             $fields = $usuarios[0];
                             foreach ($fields as $key => $value) {
                             ?>
@@ -127,5 +133,35 @@
 
     </main>
     
+    <script >
+        let stringusers = '<?=json_encode($this->usuarios)?>'
+        let users = JSON.parse(stringusers)
+        let usersCopy = users
+        let tableActivos = document.getElementById("table-activos")
+        let buscar = document.getElementById("buscar")
+        buscar.onkeyup = ()=>{
+            users = usersCopy.filter(u=>u.Nombre.includes(buscar.value) || u.Correo.includes(buscar.value)) 
+            tableActivos.tBodies[0].innerHTML = ''
+            users.forEach(e=>{
+                let tr = document.createElement("tr")
+                tr.style.cursor = "pointer" 
+                tr.onclick= ()=>{
+                 location.href =`/usuarios/get/${e.Id}`    
+                }
+                Object.keys(e).forEach(k=>{
+                    let th = document.createElement("th")
+                    th.textContent = e[k]
+                    tr.append(th)
+                })
+                
+                tableActivos.tBodies[0].append(tr)
+
+            })
+
+        }
+        
+
+    </script>
+
 </body>
 </html>

@@ -46,7 +46,7 @@
                             foreach ($quejas as $value) {
                             ?>
 
-                                <tr style="cursor:pointer;" onclick="location.href='/quejas/get/<?= $value['Id'] ?>'">
+                                <tr style="cursor:pointer;">
                                     <?php
                                     foreach ($fields as $key => $v) {
                                     ?>
@@ -87,9 +87,6 @@
                     <button class="btn btn-primary">Crear</button>
                 </form>
             </div>
-        </div>
-        <hr>
-        <div class="row">
         </div>
     </main>
 </body>
