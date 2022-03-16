@@ -9,8 +9,12 @@
         
         public function index(){
             // lo carga por defecto
-            $conductores = $this->model->getAll();
+            $conductores = $this->model->getAll(1);
             $this->view->conductores = $conductores;  
+
+            $inactivos = $this->model->getAll(0);
+            $this->view->inactivos = $inactivos;  
+            
             $this->view->render("conductores/index");
 
             

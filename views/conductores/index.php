@@ -94,9 +94,7 @@
             </div>
         </div>
         <hr>
-    </main>
-
-    <div class="row">
+        <div class="row">
 
         <div class="col-8">
             <h2>Conductores Inactivos</h2>
@@ -138,8 +136,11 @@
                     </tbody>
                 </table>
             </div>
-            <h3>Conductores: <?= count($conductores); ?></h3>
+            <h3>Inactivos: <?= count($conductores); ?></h3>
         </div>
+    </main>
+
+    
     </div>
 
 

@@ -57,6 +57,7 @@
         
         public function index(){
             $viajes = $this->model->getAll();
+            
             $conductores = $this->model->query("conductores");
             $clientes = $this->model->query("clientes");
             $this->view->viajes = $viajes;  

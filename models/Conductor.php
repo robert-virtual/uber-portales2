@@ -33,12 +33,13 @@ class Conductor extends Model {
         $stmt->close();
         $this->conn->close();
     }
-
-
     
-    public function getAll(){
+    
+    
+    public function getAll($estado = 1){
+        $this->conn = $this->db->connect();
         
-        $sql = "SELECT Id,Nombre,Correo,Telefono,TipoCarro FROM conductores where estado = 1";
+        $sql = "SELECT Id,Nombre,Correo,Telefono,TipoCarro FROM conductores where estado = $estado";
         // print_r($this->conn);
         
         $result = $this->conn->query($sql);

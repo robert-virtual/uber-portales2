@@ -33,7 +33,7 @@
         }
         
         public function getAll() {
-            $sql = "SELECT Id,clienteId,Monto,Descripcion,Destino,Fecha,MetodoPago FROM viajes";
+            $sql = "SELECT * FROM ViajesView";
             $this->conn = $this->db->connect();
             $result = $this->conn->query($sql);
             $viajes = [];

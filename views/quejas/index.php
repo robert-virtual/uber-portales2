@@ -80,7 +80,6 @@
                             <option>Conductor no llegó a tiempo</option>
                             <option>Conductor no llegó</option>
                             <option>El cobro fue mayor que el acordado</option>
-                            <option>Automóvil sucio / Mal olor</option>
                             <option>Conductor Irrespetuoso</option>
                         </datalist>
                     </p>
